@@ -101,7 +101,9 @@ printf "${OR}VAPID 1.8
 Script Started $now.${NC}\n" 
 ############################################################################################################################
 printf "${OR}Downloading perl script and collecting sample names from VCF${NC}\n" 
-curl https://raw.githubusercontent.com/pcingola/SnpEff/master/scripts/vcfEffOnePerLine.pl > vcfEffOnePerLine.pl
+#fix broken path to perl script
+wget https://ucdavis.box.com/shared/static/wslxtuktuiunpopjuq3hvz046q7954u0.pl 
+mv wslxtuktuiunpopjuq3hvz046q7954u0.pl vcfEffOnePerLine.pl
 for i in *.vcf; do 
 bcftools query -l $i | datamash transpose > ${i%.*}.samples
 printf "${OR}Extracting information from VCF (this may take some time)${NC}\n" 
